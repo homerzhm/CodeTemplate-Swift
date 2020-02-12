@@ -14,10 +14,17 @@ protocol DebugToolsViewControllerDatasource: class {
   func getDebugOptions() -> [DebugOption]
 }
 
-class DebugToolsViewController: UIViewController {
+class DebugToolsViewController: BaseViewController, ViewControllerProtocol {
   
   final class Design {
     static let cellIdentifier: String = "cellIdentifier"
+  }
+  
+  var viewModel: DebugsViewModel
+  
+  required init(viewModel: DebugsViewModel) {
+    self.viewModel = viewModel
+    super.init()
   }
   
   let tableView = UITableView(frame: CGRect.zero, style: .grouped).layoutByConstaint()
@@ -25,11 +32,6 @@ class DebugToolsViewController: UIViewController {
   weak var datasource: DebugToolsViewControllerDatasource?
   
   var debugOptions: [DebugOption] = []
-  
-  init(datasource: DebugToolsViewControllerDatasource) {
-    self.datasource = datasource
-    super.init(nibName: nil, bundle: nil)
-  }
   
   @available(*, unavailable)
   required init?(coder aDecoder: NSCoder) {
@@ -95,11 +97,11 @@ extension DebugToolsViewController: UITableViewDelegate {
   
 }
 
-extension DebugToolsViewController {
-  
-  class func showInViewController(viewController: UIViewController) {
-    let nav = UINavigationController(rootViewController: DebugToolsViewController(datasource: DebugDatasource.shared))
-    viewController.present(nav, animated: true, completion: nil)
-  }
-  
-}
+//extension DebugToolsViewController {
+//  
+//  class func showInViewController(viewController: UIViewController) {
+//    let nav = UINavigationController(rootViewController: DebugToolsViewController(datasource: DebugDatasource.shared))
+//    viewController.present(nav, animated: true, completion: nil)
+//  }
+//  
+//}
