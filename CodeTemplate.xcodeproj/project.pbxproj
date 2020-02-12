@@ -15,6 +15,9 @@
 		338B791923F4A209006ECE6B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B791823F4A209006ECE6B /* ViewModel.swift */; };
 		338B791B23F4A239006ECE6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B791A23F4A239006ECE6B /* ViewController.swift */; };
 		338B791D23F4A5FF006ECE6B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338B791C23F4A5FF006ECE6B /* Launch Screen.storyboard */; };
+		338B792123F4A9C4006ECE6B /* UIComponentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B792023F4A9C4006ECE6B /* UIComponentListViewController.swift */; };
+		338B792323F4A9D4006ECE6B /* UIComponentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B792223F4A9D4006ECE6B /* UIComponentCoordinator.swift */; };
+		338B792523F4A9FC006ECE6B /* UIComponentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B792423F4A9FC006ECE6B /* UIComponentListViewModel.swift */; };
 		F1B5B5AB23ABD96C0000F521 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B5B5AA23ABD96C0000F521 /* AppDelegate.swift */; };
 		F1B5B5AD23ABD96C0000F521 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B5B5AC23ABD96C0000F521 /* SceneDelegate.swift */; };
 		F1B5B5AF23ABD96C0000F521 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B5B5AE23ABD96C0000F521 /* ContentView.swift */; };
@@ -55,6 +58,9 @@
 		338B791823F4A209006ECE6B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		338B791A23F4A239006ECE6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		338B791C23F4A5FF006ECE6B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		338B792023F4A9C4006ECE6B /* UIComponentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentListViewController.swift; sourceTree = "<group>"; };
+		338B792223F4A9D4006ECE6B /* UIComponentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentCoordinator.swift; sourceTree = "<group>"; };
+		338B792423F4A9FC006ECE6B /* UIComponentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentListViewModel.swift; sourceTree = "<group>"; };
 		F1B5B5A723ABD96C0000F521 /* CodeTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B5B5AA23ABD96C0000F521 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1B5B5AC23ABD96C0000F521 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +134,24 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		338B791E23F4A96E006ECE6B /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				338B791F23F4A9A9006ECE6B /* UIComponentList */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		338B791F23F4A9A9006ECE6B /* UIComponentList */ = {
+			isa = PBXGroup;
+			children = (
+				338B792023F4A9C4006ECE6B /* UIComponentListViewController.swift */,
+				338B792223F4A9D4006ECE6B /* UIComponentCoordinator.swift */,
+				338B792423F4A9FC006ECE6B /* UIComponentListViewModel.swift */,
+			);
+			path = UIComponentList;
+			sourceTree = "<group>";
+		};
 		F1B5B59E23ABD96C0000F521 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +177,7 @@
 		F1B5B5A923ABD96C0000F521 /* CodeTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				338B791E23F4A96E006ECE6B /* Feature */,
 				338B790D23F4A138006ECE6B /* Base */,
 				F1B5B5DC23AD66F00000F521 /* Kit */,
 				F1B5B5AA23ABD96C0000F521 /* AppDelegate.swift */,
@@ -380,13 +405,16 @@
 				338B791B23F4A239006ECE6B /* ViewController.swift in Sources */,
 				F1B5B5EB23AD66F00000F521 /* DebugToolsViewController.swift in Sources */,
 				F1B5B5AB23ABD96C0000F521 /* AppDelegate.swift in Sources */,
+				338B792323F4A9D4006ECE6B /* UIComponentCoordinator.swift in Sources */,
 				338B791323F4A193006ECE6B /* BaseViewController.swift in Sources */,
 				338B791523F4A1AD006ECE6B /* BaseNavigationViewController.swift in Sources */,
+				338B792523F4A9FC006ECE6B /* UIComponentListViewModel.swift in Sources */,
 				338B791023F4A14F006ECE6B /* Coordinator.swift in Sources */,
 				F1B5B5E823AD66F00000F521 /* Array.swift in Sources */,
 				338B791923F4A209006ECE6B /* ViewModel.swift in Sources */,
 				F1B5B5E923AD66F00000F521 /* Font.swift in Sources */,
 				F1B5B5AD23ABD96C0000F521 /* SceneDelegate.swift in Sources */,
+				338B792123F4A9C4006ECE6B /* UIComponentListViewController.swift in Sources */,
 				338B790C23F4A0A9006ECE6B /* DebugToolsCoordinator.swift in Sources */,
 				F1B5B5EA23AD66F00000F521 /* DebugModel.swift in Sources */,
 				338B791723F4A1FD006ECE6B /* DebugsViewModel.swift in Sources */,
