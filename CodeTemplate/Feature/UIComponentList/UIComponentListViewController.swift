@@ -12,6 +12,12 @@ class UIComponentListViewController: BaseViewController, ViewControllerProtocol 
   
   var viewModel: UIComponentListViewModel
   
+  let _view = StackScrollView()
+  
+  override func loadView() {
+    view = _view
+  }
+  
   required init(viewModel: UIComponentListViewModel) {
     self.viewModel = viewModel
     super.init()
