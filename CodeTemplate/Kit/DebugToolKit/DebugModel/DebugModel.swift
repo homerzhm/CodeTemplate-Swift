@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
+typealias DebugCoordinatorCreate = (_ rootNavigationController: BaseNavigationViewController?) -> Coordinator
+
 enum DebugOptionType {
   case function
-  case viewController
+  case coordinator(coordinatorCreate: DebugCoordinatorCreate)
 }
 
 class DebugOption {
   
   let title: String
   let type: DebugOptionType
-  
-  var actionBlock: ((_ viewController: UIViewController?) -> Void)?
-  
+    
   init(with title: String, type: DebugOptionType = .function) {
     self.title = title
     self.type = type

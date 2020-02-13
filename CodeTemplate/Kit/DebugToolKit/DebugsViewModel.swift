@@ -12,22 +12,34 @@ import Combine
 class DebugsViewModel: ViewModelProtocol {
   
   struct Input {
-    
+    let optionSelectedSubject:  PassthroughSubject<DebugOption, Never>
   }
   
   struct Output {
     let debugOptions: CurrentValueSubject<[DebugOption], Never>
+    let optionSelected: PassthroughSubject<DebugOption, Never>
   }
   
   let input: Input
   let output: Output
   
   private let debugOptions = CurrentValueSubject<[DebugOption], Never>([])
+  private let optionSelected = PassthroughSubject<DebugOption, Never>()
   
   init() {
-    self.input = Input()
+    self.input = Input(
+      optionSelectedSubject: optionSelected
+    )
     self.output = Output(
-      debugOptions: debugOptions
+      debugOptions: debugOptions,
+      optionSelected: optionSelected
     )
   }
+  
+  func reloadData() {
+    debugOptions.send([
+      UIComponentCoordinator.generateDebugOption()
+    ])
+  }
+  
 }
