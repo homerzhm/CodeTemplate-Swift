@@ -12,7 +12,7 @@ import UIKit
 class StackScrollView: UIView {
   
   private let scrollView = UIScrollView().layoutByConstaint()
-  private let stackView = UIStackView().layoutByConstaint()
+  let stackView = UIStackView().layoutByConstaint()
   
   var stackViewInset = UIEdgeInsets(uniformPadding: 0.0) {
     didSet {

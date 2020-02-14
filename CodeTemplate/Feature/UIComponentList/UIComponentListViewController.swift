@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UIComponentListViewController: BaseViewController, ViewControllerProtocol {
   
@@ -25,6 +26,15 @@ class UIComponentListViewController: BaseViewController, ViewControllerProtocol 
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    _view.stackView.axis = .vertical
+    _view.stackView.alignment = .center
+    _view.stackView.spacing = 10.0
+    
+    _view.stackView.addArrangedSubview(BaseControl())
   }
   
 }

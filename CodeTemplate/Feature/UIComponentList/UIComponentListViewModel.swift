@@ -27,3 +27,7 @@ class UIComponentListViewModel: ViewModelProtocol {
   }
   
 }
+
+struct UIComponentPresentModel {
+  
+}

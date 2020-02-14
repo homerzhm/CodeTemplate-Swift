@@ -20,6 +20,7 @@
 		338B792523F4A9FC006ECE6B /* UIComponentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B792423F4A9FC006ECE6B /* UIComponentListViewModel.swift */; };
 		338B792823F5B41F006ECE6B /* StackScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B792723F5B41F006ECE6B /* StackScrollView.swift */; };
 		338B792A23F5D6D0006ECE6B /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B792923F5D6D0006ECE6B /* Geometry.swift */; };
+		338B792D23F5DF4E006ECE6B /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B792C23F5DF4E006ECE6B /* Control.swift */; };
 		F1B5B5AB23ABD96C0000F521 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B5B5AA23ABD96C0000F521 /* AppDelegate.swift */; };
 		F1B5B5AD23ABD96C0000F521 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B5B5AC23ABD96C0000F521 /* SceneDelegate.swift */; };
 		F1B5B5B123ABD96E0000F521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B5B5B023ABD96E0000F521 /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		338B792423F4A9FC006ECE6B /* UIComponentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentListViewModel.swift; sourceTree = "<group>"; };
 		338B792723F5B41F006ECE6B /* StackScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackScrollView.swift; sourceTree = "<group>"; };
 		338B792923F5D6D0006ECE6B /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		338B792C23F5DF4E006ECE6B /* Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
 		F1B5B5A723ABD96C0000F521 /* CodeTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B5B5AA23ABD96C0000F521 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1B5B5AC23ABD96C0000F521 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		338B790D23F4A138006ECE6B /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				338B792B23F5DF3A006ECE6B /* View */,
 				F1B5B5DE23AD66F00000F521 /* Extension */,
 				338B791123F4A181006ECE6B /* ViewController */,
 				338B790E23F4A13F006ECE6B /* Protocols */,
@@ -155,6 +158,14 @@
 				338B792423F4A9FC006ECE6B /* UIComponentListViewModel.swift */,
 			);
 			path = UIComponentList;
+			sourceTree = "<group>";
+		};
+		338B792B23F5DF3A006ECE6B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				338B792C23F5DF4E006ECE6B /* Control.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		F1B5B59E23ABD96C0000F521 = {
@@ -398,6 +409,7 @@
 				338B792123F4A9C4006ECE6B /* UIComponentListViewController.swift in Sources */,
 				338B790C23F4A0A9006ECE6B /* DebugToolsCoordinator.swift in Sources */,
 				F1B5B5EA23AD66F00000F521 /* DebugModel.swift in Sources */,
+				338B792D23F5DF4E006ECE6B /* Control.swift in Sources */,
 				338B791723F4A1FD006ECE6B /* DebugsViewModel.swift in Sources */,
 				F1B5B5E723AD66F00000F521 /* AutoLayout.swift in Sources */,
 			);
