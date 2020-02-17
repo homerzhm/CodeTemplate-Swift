@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UIComponentListViewModel: ViewModelProtocol {
   
@@ -28,6 +29,21 @@ class UIComponentListViewModel: ViewModelProtocol {
   
 }
 
+protocol UIComponentPresentViewProtocol {
+  static func createPresentView() -> UIView
+}
+
 struct UIComponentPresentModel {
+  
+  let presentView: UIView
+  
+  init(presentViewCreator: UIComponentPresentViewProtocol.Type, size: CGSize) {
+    presentView = presentViewCreator.createPresentView()
+    presentView.layoutByConstaint()
+    NSLayoutConstraint.activate([
+      presentView.widthAnchor.constraint(equalToConstant: size.width),
+      presentView.heightAnchor.constraint(equalToConstant: size.height)
+    ])
+  }
   
 }

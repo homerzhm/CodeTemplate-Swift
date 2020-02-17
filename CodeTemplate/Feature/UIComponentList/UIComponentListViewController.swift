@@ -34,7 +34,13 @@ class UIComponentListViewController: BaseViewController, ViewControllerProtocol 
     _view.stackView.alignment = .center
     _view.stackView.spacing = 10.0
     
-    _view.stackView.addArrangedSubview(BaseControl())
+    let button = Button()
+    button.label.text = "gretting.. .. "
+    button.animation = .hightlight(backgroundColor: UIColor.lightGray)
+    button.addAction(event: .touchUpInside) { _, _ in
+      print("grettingg..... . .. .")
+    }
+    _view.stackView.addArrangedSubview(button)
   }
   
 }

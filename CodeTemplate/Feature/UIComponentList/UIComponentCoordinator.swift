@@ -24,6 +24,7 @@ extension UIComponentCoordinator: DebugItemProtocal {
     let createCoordination: DebugCoordinatorCreate = { navigationController in
       return UIComponentCoordinator(rootNavigationController: navigationController)
     }
+    
     let option = DebugOption(with: "UI Components", type: .coordinator(coordinatorCreate: createCoordination))
     return option
   }
