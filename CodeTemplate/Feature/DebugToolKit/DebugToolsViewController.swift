@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 import Combine
 
-protocol DebugToolsViewControllerDatasource: class {
-  func getDebugOptions() -> [DebugOption]
-}
-
 class DebugToolsViewController: BaseViewController, ViewControllerProtocol {
   
   final class Design {
@@ -21,7 +17,7 @@ class DebugToolsViewController: BaseViewController, ViewControllerProtocol {
   }
   
   var viewModel: DebugsViewModel
-  private var cancellables: [Cancellable] = []
+  private var cancellables: [AnyCancellable] = []
   
   required init(viewModel: DebugsViewModel) {
     self.viewModel = viewModel
@@ -44,16 +40,15 @@ class DebugToolsViewController: BaseViewController, ViewControllerProtocol {
     navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closeDebugToolKit))
     tableView.delegate = self
     
-    let optionCancellable = viewModel.output.debugOptions.sink { [weak self] options in
+    viewModel.output.debugOptions.sink { [weak self] options in
       self?.debugOptions = options
-    }
-    cancellables.append(optionCancellable)
+    }.dispose(at: &cancellables)
     
+    viewModel.reloadData()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    viewModel.reloadData()
   }
   
   @objc func closeDebugToolKit() {

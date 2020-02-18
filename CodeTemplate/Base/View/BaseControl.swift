@@ -27,6 +27,7 @@ class BaseControl: UIControl {
     backgroundColorView.alpha = 0.0
   }
   
+  @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -47,6 +48,10 @@ class BaseControl: UIControl {
     let hitView = super.hitTest(point, with: event)
     if let view = hitView {
       if view == contentView {
+        return self
+      }
+      
+      if view.isDescendant(of: contentView) {
         return self
       }
     }

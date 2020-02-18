@@ -13,14 +13,13 @@ class DebugToolsCoordinator: BaseCoordinator {
   
   private let viewModel = DebugsViewModel()
   
-  private var cancellables: [Cancellable] = []
+  private var cancellables: [AnyCancellable] = []
   
   override func start() {
     
-    let optionSeleced = viewModel.output.optionSelected.sink { [weak self] option in
+    viewModel.output.optionSelected.sink { [weak self] option in
       self?.actionForOption(option: option)
-    }
-    cancellables.append(optionSeleced)
+    }.dispose(at: &cancellables)
     
     let vc = DebugToolsViewController(viewModel: viewModel)
     rootNavigationController?.pushViewController(vc, animated: false)
@@ -30,6 +29,7 @@ class DebugToolsCoordinator: BaseCoordinator {
     switch option.type {
     case .coordinator(let creator):
       let coordinator = creator(rootNavigationController)
+      addChildCoordinator(childCoordinator: coordinator)
       coordinator.start()
     case .function:
       break

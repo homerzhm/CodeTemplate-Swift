@@ -39,10 +39,6 @@ class Button: BaseControl {
     contentView.backgroundColor = UIColor(red: 222.0/255.0, green: 101.0/255.0, blue: 77.0/255.0, alpha: 1.0)
   }
   
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
 }
 
 extension Button: UIComponentPresentViewProtocol {

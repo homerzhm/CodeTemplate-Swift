@@ -8,16 +8,21 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class UIComponentListViewController: BaseViewController, ViewControllerProtocol {
   
-  var viewModel: UIComponentListViewModel
+  let viewModel: UIComponentListViewModel
   
   let _view = StackScrollView()
   
-  private var presentors: [UIComponentPresentModel] = [
-    UIComponentPresentModel(presentViewCreator: Button.self, size: CGSize(width: 300.0, height: 50.0))
-  ]
+  private var cancellables: [AnyCancellable] = []
+  
+  private var presentors: [UIComponentPresentModel] = [] {
+    didSet {
+      reloadPresentors()
+    }
+  }
   
   override func loadView() {
     view = _view
@@ -35,6 +40,21 @@ class UIComponentListViewController: BaseViewController, ViewControllerProtocol 
     _view.stackView.spacing = 10.0
     _view.stackViewInset = UIEdgeInsets(uniformPadding: 10.0)
     
+    viewModel.output.presentors.sink { [weak self] data in
+      self?.presentors = data
+    }.dispose(at: &cancellables)
+    
+    viewModel.reloadData()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+  }
+  
+  private func reloadPresentors() {
+    for view in _view.stackView.arrangedSubviews {
+      view.removeFromSuperview()
+    }
     for item in presentors {
       item.presentViews.forEach { theView in
         _view.stackView.addArrangedSubview(theView)

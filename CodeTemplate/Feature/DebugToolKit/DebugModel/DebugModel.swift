@@ -28,5 +28,5 @@ class DebugOption {
 }
 
 protocol DebugItemProtocal {
-  static func generateDebugOption() -> DebugOption
+  static func generateDebugOptions() -> [DebugOption]
 }

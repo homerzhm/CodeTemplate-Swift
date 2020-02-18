@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3336B40A23FC8D4F00E821DB /* CardComponentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3336B40923FC8D4F00E821DB /* CardComponentListViewModel.swift */; };
+		3336B40C23FC94C600E821DB /* ButtonComponentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3336B40B23FC94C600E821DB /* ButtonComponentListViewModel.swift */; };
+		333943D923FC780E003931DB /* Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333943D823FC780E003931DB /* Combine.swift */; };
+		333943DB23FC871A003931DB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333943DA23FC871A003931DB /* Card.swift */; };
 		338B790C23F4A0A9006ECE6B /* DebugToolsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B790B23F4A0A9006ECE6B /* DebugToolsCoordinator.swift */; };
 		338B791023F4A14F006ECE6B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B790F23F4A14F006ECE6B /* Coordinator.swift */; };
 		338B791323F4A193006ECE6B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B791223F4A193006ECE6B /* BaseViewController.swift */; };
@@ -53,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3336B40923FC8D4F00E821DB /* CardComponentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponentListViewModel.swift; sourceTree = "<group>"; };
+		3336B40B23FC94C600E821DB /* ButtonComponentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonComponentListViewModel.swift; sourceTree = "<group>"; };
+		333943D823FC780E003931DB /* Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Combine.swift; sourceTree = "<group>"; };
+		333943DA23FC871A003931DB /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		338B790B23F4A0A9006ECE6B /* DebugToolsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugToolsCoordinator.swift; sourceTree = "<group>"; };
 		338B790F23F4A14F006ECE6B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		338B791223F4A193006ECE6B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +120,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		333943DC23FC8BFA003931DB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				338B792423F4A9FC006ECE6B /* UIComponentListViewModel.swift */,
+				3336B40923FC8D4F00E821DB /* CardComponentListViewModel.swift */,
+				3336B40B23FC94C600E821DB /* ButtonComponentListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		338B790D23F4A138006ECE6B /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,9 +173,9 @@
 		338B791F23F4A9A9006ECE6B /* UIComponentList */ = {
 			isa = PBXGroup;
 			children = (
+				333943DC23FC8BFA003931DB /* ViewModels */,
 				338B792023F4A9C4006ECE6B /* UIComponentListViewController.swift */,
 				338B792223F4A9D4006ECE6B /* UIComponentCoordinator.swift */,
-				338B792423F4A9FC006ECE6B /* UIComponentListViewModel.swift */,
 			);
 			path = UIComponentList;
 			sourceTree = "<group>";
@@ -167,6 +185,7 @@
 			children = (
 				338B792C23F5DF4E006ECE6B /* BaseControl.swift */,
 				F1DBF15723FB1A61000BEA26 /* Button.swift */,
+				333943DA23FC871A003931DB /* Card.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,6 +260,7 @@
 				F1B5B5E223AD66F00000F521 /* Font.swift */,
 				F1B5B5DF23AD66F00000F521 /* AutoLayout.swift */,
 				338B792923F5D6D0006ECE6B /* Geometry.swift */,
+				333943D823FC780E003931DB /* Combine.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -395,7 +415,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3336B40A23FC8D4F00E821DB /* CardComponentListViewModel.swift in Sources */,
 				338B792823F5B41F006ECE6B /* StackScrollView.swift in Sources */,
+				333943D923FC780E003931DB /* Combine.swift in Sources */,
 				338B791B23F4A239006ECE6B /* ViewController.swift in Sources */,
 				F1B5B5EB23AD66F00000F521 /* DebugToolsViewController.swift in Sources */,
 				F1B5B5AB23ABD96C0000F521 /* AppDelegate.swift in Sources */,
@@ -408,10 +430,12 @@
 				F1B5B5E823AD66F00000F521 /* Array.swift in Sources */,
 				338B791923F4A209006ECE6B /* ViewModel.swift in Sources */,
 				338B792A23F5D6D0006ECE6B /* Geometry.swift in Sources */,
+				3336B40C23FC94C600E821DB /* ButtonComponentListViewModel.swift in Sources */,
 				F1B5B5E923AD66F00000F521 /* Font.swift in Sources */,
 				F1B5B5AD23ABD96C0000F521 /* SceneDelegate.swift in Sources */,
 				338B792123F4A9C4006ECE6B /* UIComponentListViewController.swift in Sources */,
 				338B790C23F4A0A9006ECE6B /* DebugToolsCoordinator.swift in Sources */,
+				333943DB23FC871A003931DB /* Card.swift in Sources */,
 				F1B5B5EA23AD66F00000F521 /* DebugModel.swift in Sources */,
 				338B792D23F5DF4E006ECE6B /* BaseControl.swift in Sources */,
 				338B791723F4A1FD006ECE6B /* DebugsViewModel.swift in Sources */,
