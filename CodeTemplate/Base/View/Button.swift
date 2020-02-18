@@ -15,7 +15,7 @@ class Button: BaseControl {
     static let cornerRadiuse: CGFloat = 5.0
   }
   
-  private let label = UILabel().layoutByConstaint()
+  private let label = UILabel().layoutByConstraint()
   
   var textFont = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
   

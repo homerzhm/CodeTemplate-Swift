@@ -11,8 +11,8 @@ import UIKit
 
 class BaseControl: UIControl {
   
-  let contentView = UIView().layoutByConstaint()
-  private let backgroundColorView = UIView().layoutByConstaint()
+  let contentView = UIView().layoutByConstraint()
+  private let backgroundColorView = UIView().layoutByConstraint()
   
   private var actions: [Action] = []
   var animation: Animation = .scale(value: 0.95)

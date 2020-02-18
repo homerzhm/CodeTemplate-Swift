@@ -11,8 +11,8 @@ import UIKit
 
 class StackScrollView: UIView {
   
-  private let scrollView = UIScrollView().layoutByConstaint()
-  let stackView = UIStackView().layoutByConstaint()
+  private let scrollView = UIScrollView().layoutByConstraint()
+  let stackView = UIStackView().layoutByConstraint()
   
   var stackViewInset = UIEdgeInsets(uniformPadding: 0.0) {
     didSet {

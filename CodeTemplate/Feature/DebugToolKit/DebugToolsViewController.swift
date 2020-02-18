@@ -28,17 +28,12 @@ class DebugToolsViewController: BaseViewController, ViewControllerProtocol {
     super.init()
   }
   
-  let tableView = UITableView(frame: CGRect.zero, style: .grouped).layoutByConstaint()
+  let tableView = UITableView(frame: CGRect.zero, style: .grouped).layoutByConstraint()
     
   var debugOptions: [DebugOption] = [] {
     didSet {
       tableView.reloadData()
     }
-  }
-  
-  @available(*, unavailable)
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
   }
   
   override func viewDidLoad() {

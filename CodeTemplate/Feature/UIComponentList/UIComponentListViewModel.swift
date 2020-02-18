@@ -40,7 +40,7 @@ struct UIComponentPresentModel {
   init(presentViewCreator: UIComponentPresentViewProtocol.Type, size: CGSize) {
     presentViews = presentViewCreator.createPresentViews()
     presentViews.forEach { view in
-      view.layoutByConstaint()
+      view.layoutByConstraint()
       NSLayoutConstraint.activate([
         view.widthAnchor.constraint(equalToConstant: size.width),
         view.heightAnchor.constraint(equalToConstant: size.height)
