@@ -22,11 +22,12 @@ extension UIView {
   
   func pinToSuperView() {
     guard let superView = superview else {
-      return
+      fatalError("You need super view")
     }
     pin(to: superView)
   }
   
+  @discardableResult
   func layoutByConstaint() -> Self {
     translatesAutoresizingMaskIntoConstraints = false
     return self

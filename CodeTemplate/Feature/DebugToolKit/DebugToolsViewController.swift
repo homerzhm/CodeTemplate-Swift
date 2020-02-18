@@ -8,27 +8,32 @@
 
 import Foundation
 import UIKit
-
+import Combine
 
 protocol DebugToolsViewControllerDatasource: class {
   func getDebugOptions() -> [DebugOption]
 }
 
-class DebugToolsViewController: UIViewController {
+class DebugToolsViewController: BaseViewController, ViewControllerProtocol {
   
   final class Design {
     static let cellIdentifier: String = "cellIdentifier"
   }
   
+  var viewModel: DebugsViewModel
+  private var cancellables: [Cancellable] = []
+  
+  required init(viewModel: DebugsViewModel) {
+    self.viewModel = viewModel
+    super.init()
+  }
+  
   let tableView = UITableView(frame: CGRect.zero, style: .grouped).layoutByConstaint()
-  
-  weak var datasource: DebugToolsViewControllerDatasource?
-  
-  var debugOptions: [DebugOption] = []
-  
-  init(datasource: DebugToolsViewControllerDatasource) {
-    self.datasource = datasource
-    super.init(nibName: nil, bundle: nil)
+    
+  var debugOptions: [DebugOption] = [] {
+    didSet {
+      tableView.reloadData()
+    }
   }
   
   @available(*, unavailable)
@@ -43,20 +48,17 @@ class DebugToolsViewController: UIViewController {
     tableView.dataSource = self
     navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(closeDebugToolKit))
     tableView.delegate = self
+    
+    let optionCancellable = viewModel.output.debugOptions.sink { [weak self] options in
+      self?.debugOptions = options
+    }
+    cancellables.append(optionCancellable)
+    
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    reloadData()
-  }
-  
-  
-  func reloadData() {
-    guard let datasource = datasource else {
-      return
-    }
-    debugOptions = datasource.getDebugOptions()
-    tableView.reloadData()
+    viewModel.reloadData()
   }
   
   @objc func closeDebugToolKit() {
@@ -85,21 +87,7 @@ extension DebugToolsViewController: UITableViewDelegate {
     guard let debugOption = debugOptions.at(index: indexPath.row) else {
       return
     }
-    switch debugOption.type {
-    case .viewController:
-      debugOption.actionBlock?(self)
-    default:
-      break
-    }
-  }
-  
-}
-
-extension DebugToolsViewController {
-  
-  class func showInViewController(viewController: UIViewController) {
-    let nav = UINavigationController(rootViewController: DebugToolsViewController(datasource: DebugDatasource.shared))
-    viewController.present(nav, animated: true, completion: nil)
+    viewModel.input.optionSelectedSubject.send(debugOption)
   }
   
 }
