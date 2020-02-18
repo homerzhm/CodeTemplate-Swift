@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class UIComponentListViewModel: ViewModelProtocol {
   
@@ -16,15 +17,27 @@ class UIComponentListViewModel: ViewModelProtocol {
   }
   
   struct Output {
-    
+    let presentors: CurrentValueSubject<[UIComponentPresentModel], Never>
   }
   
   let input: Input
   let output: Output
   
+  private let presentors = CurrentValueSubject<[UIComponentPresentModel], Never>([])
+  
   init() {
     input = Input()
-    output = Output()
+    output = Output(
+      presentors: presentors
+    )
+  }
+  
+  func reloadData() {
+    presentors.send(provideData())
+  }
+  
+  func provideData() -> [UIComponentPresentModel] {
+    fatalError("Need Sub class to override this method")
   }
   
 }
@@ -40,12 +53,11 @@ struct UIComponentPresentModel {
   init(presentViewCreator: UIComponentPresentViewProtocol.Type, size: CGSize) {
     presentViews = presentViewCreator.createPresentViews()
     presentViews.forEach { view in
-      view.layoutByConstaint()
+      view.layoutByConstraint()
       NSLayoutConstraint.activate([
         view.widthAnchor.constraint(equalToConstant: size.width),
         view.heightAnchor.constraint(equalToConstant: size.height)
       ])
     }
   }
-  
 }

@@ -10,22 +10,38 @@ import Foundation
 
 class UIComponentCoordinator: BaseCoordinator {
   
-  let viewModel = UIComponentListViewModel()
+  var viewModel: UIComponentListViewModel = UIComponentListViewModel()
   
   override func start() {
     let vc = UIComponentListViewController(viewModel: viewModel)
+    vc.viewDidDismiss = { [weak self] _ in
+      self?.coordinatorIsFinished()
+    }
     rootNavigationController?.pushViewController(vc, animated: true)
   }
   
 }
 
 extension UIComponentCoordinator: DebugItemProtocal {
-  static func generateDebugOption() -> DebugOption {
-    let createCoordination: DebugCoordinatorCreate = { navigationController in
-      return UIComponentCoordinator(rootNavigationController: navigationController)
-    }
+  
+  static func generateDebugOptions() -> [DebugOption] {
     
-    let option = DebugOption(with: "UI Components", type: .coordinator(coordinatorCreate: createCoordination))
-    return option
+    // For Buttons
+    let buttonsCoordintor: DebugCoordinatorCreate = { navigationController in
+      let result = UIComponentCoordinator(rootNavigationController: navigationController)
+      result.viewModel = ButtonComponentListViewModel()
+      return result
+    }
+    let buttonsOption = DebugOption(with: "Buttons Components", type: .coordinator(coordinatorCreate: buttonsCoordintor))
+    
+    // For Cards
+    let cardCoordination: DebugCoordinatorCreate = { navigationController in
+      let result = UIComponentCoordinator(rootNavigationController: navigationController)
+      result.viewModel = CardComponentListViewModel()
+      return result
+    }
+    let cardOption = DebugOption(with: "Cards Components", type: .coordinator(coordinatorCreate: cardCoordination))
+    
+    return [buttonsOption, cardOption]
   }
 }

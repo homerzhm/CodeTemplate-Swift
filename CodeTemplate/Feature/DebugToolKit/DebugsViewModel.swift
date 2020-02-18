@@ -37,9 +37,13 @@ class DebugsViewModel: ViewModelProtocol {
   }
   
   func reloadData() {
-    debugOptions.send([
-      UIComponentCoordinator.generateDebugOption()
-    ])
+    let items = debugItems.compactMap { debugItem -> [DebugOption]? in
+      return debugItem.generateDebugOptions()
+    }
+    debugOptions.send(Array(items.joined()))
   }
   
+  private let debugItems: [DebugItemProtocal.Type] = [
+    UIComponentCoordinator.self
+  ]
 }

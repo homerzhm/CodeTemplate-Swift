@@ -28,7 +28,7 @@ extension UIView {
   }
   
   @discardableResult
-  func layoutByConstaint() -> Self {
+  func layoutByConstraint() -> Self {
     translatesAutoresizingMaskIntoConstraints = false
     return self
   }
