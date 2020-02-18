@@ -30,20 +30,22 @@ class UIComponentListViewModel: ViewModelProtocol {
 }
 
 protocol UIComponentPresentViewProtocol {
-  static func createPresentView() -> UIView
+  static func createPresentViews() -> [UIView]
 }
 
 struct UIComponentPresentModel {
   
-  let presentView: UIView
+  let presentViews: [UIView]
   
   init(presentViewCreator: UIComponentPresentViewProtocol.Type, size: CGSize) {
-    presentView = presentViewCreator.createPresentView()
-    presentView.layoutByConstaint()
-    NSLayoutConstraint.activate([
-      presentView.widthAnchor.constraint(equalToConstant: size.width),
-      presentView.heightAnchor.constraint(equalToConstant: size.height)
-    ])
+    presentViews = presentViewCreator.createPresentViews()
+    presentViews.forEach { view in
+      view.layoutByConstaint()
+      NSLayoutConstraint.activate([
+        view.widthAnchor.constraint(equalToConstant: size.width),
+        view.heightAnchor.constraint(equalToConstant: size.height)
+      ])
+    }
   }
   
 }

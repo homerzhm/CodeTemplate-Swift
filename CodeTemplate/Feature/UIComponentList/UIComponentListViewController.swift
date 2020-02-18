@@ -15,6 +15,10 @@ class UIComponentListViewController: BaseViewController, ViewControllerProtocol 
   
   let _view = StackScrollView()
   
+  private var presentors: [UIComponentPresentModel] = [
+    UIComponentPresentModel(presentViewCreator: Button.self, size: CGSize(width: 300.0, height: 50.0))
+  ]
+  
   override func loadView() {
     view = _view
   }
@@ -33,14 +37,13 @@ class UIComponentListViewController: BaseViewController, ViewControllerProtocol 
     _view.stackView.axis = .vertical
     _view.stackView.alignment = .center
     _view.stackView.spacing = 10.0
+    _view.stackViewInset = UIEdgeInsets(uniformPadding: 10.0)
     
-    let button = Button()
-    button.label.text = "gretting.. .. "
-    button.animation = .hightlight(backgroundColor: UIColor.lightGray)
-    button.addAction(event: .touchUpInside) { _, _ in
-      print("grettingg..... . .. .")
+    for item in presentors {
+      item.presentViews.forEach { theView in
+        _view.stackView.addArrangedSubview(theView)
+      }
     }
-    _view.stackView.addArrangedSubview(button)
   }
   
 }

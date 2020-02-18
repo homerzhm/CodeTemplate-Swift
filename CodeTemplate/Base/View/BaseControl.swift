@@ -15,7 +15,7 @@ class BaseControl: UIControl {
   private let backgroundColorView = UIView().layoutByConstaint()
   
   private var actions: [Action] = []
-  var animation: Animation = .scale(value: 0.8)
+  var animation: Animation = .scale(value: 0.95)
   
   init() {
     super.init(frame: .zero)
@@ -61,15 +61,17 @@ class BaseControl: UIControl {
   
   override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
     let result = super.continueTracking(touch, with: event)
-    if !isTouchInside {
-      dismissAnimation(animation: animation)
+    if touch.phase == .moved {
+      isTouchInside ? presentAnimation(animation: animation) : dismissAnimation(animation: animation)
     }
     return result
   }
   
   override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
     super.endTracking(touch, with: event)
-    dismissAnimation(animation: animation)
+    if let touch = touch, touch.phase == .ended {
+      dismissAnimation(animation: animation)
+    }
   }
   
   private func presentAnimation(animation: Animation) {
@@ -102,11 +104,6 @@ class BaseControl: UIControl {
       break
     }
   }
-  
-  override var intrinsicContentSize: CGSize {
-    return CGSize(width: 300, height: 100)
-  }
-  
 }
 
 extension BaseControl {
