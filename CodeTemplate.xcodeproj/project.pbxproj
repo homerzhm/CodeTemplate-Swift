@@ -156,7 +156,6 @@
 			children = (
 				338B791223F4A193006ECE6B /* BaseViewController.swift */,
 				338B791423F4A1AD006ECE6B /* BaseNavigationViewController.swift */,
-				338B792723F5B41F006ECE6B /* StackScrollView.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -186,6 +185,7 @@
 				338B792C23F5DF4E006ECE6B /* BaseControl.swift */,
 				F1DBF15723FB1A61000BEA26 /* Button.swift */,
 				333943DA23FC871A003931DB /* Card.swift */,
+				338B792723F5B41F006ECE6B /* StackScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

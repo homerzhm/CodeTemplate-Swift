@@ -28,6 +28,7 @@ class Card: BaseControl {
   private let titleLabel: UILabel = {
     let result = UILabel()
     result.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+    result.numberOfLines = 0
     return result
   }()
   
@@ -52,6 +53,8 @@ class Card: BaseControl {
     switch currentLayoutType {
     case .base(let image, let info):
       baseLayout(image: image, info: info)
+    case .bottomBase(let image, let header, let title):
+      bottomBaseLayout(image: image, header: header, title: title)
     }
   }
   
@@ -91,6 +94,53 @@ class Card: BaseControl {
     contentView.clipsToBounds = true
     contentView.layer.cornerRadius = 10.0
     contentView.backgroundColor = .white
+    
+    shadowSetting = .normal(info: BaseControl.ShadowInfo(path: nil,
+                                                         radius: 4.0,
+                                                         offset: CGSize(width: 3.0, height: 3.0),
+                                                         opacity: 0.3,
+                                                         color: UIColor.lightGray))
+  }
+  
+  func bottomBaseLayout(image: UIImage, header: String, title: String) {
+    let stackViewPadding = UIEdgeInsets(uniformPadding: 10.0)
+    imageView.contentMode = .scaleAspectFill
+    
+    contentView.addSubview(verticalStackView)
+    contentView.addSubview(imageView)
+    
+    titleLabel.textColor = .black
+    headerLabel.textColor = .lightGray
+    
+    NSLayoutConstraint.activate([
+      imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+      imageView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+      
+      verticalStackView.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: stackViewPadding.bottom),
+      verticalStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: stackViewPadding.top),
+      verticalStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: stackViewPadding.left),
+      verticalStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: stackViewPadding.right)
+    ])
+    
+    let stackSubViews = [headerLabel, titleLabel]
+    stackSubViews.forEach { subView in
+      verticalStackView.addArrangedSubview(subView)
+    }
+    
+    imageView.image = image
+    titleLabel.text = title
+    headerLabel.text = header
+    
+    contentView.clipsToBounds = true
+    contentView.layer.cornerRadius = 10.0
+    contentView.backgroundColor = .white
+    
+    shadowSetting = .normal(info: BaseControl.ShadowInfo(path: nil,
+                                                         radius: 4.0,
+                                                         offset: CGSize(width: 3.0, height: -3.0),
+                                                         opacity: 0.3,
+                                                         color: UIColor.lightGray))
   }
   
 }
@@ -105,6 +155,7 @@ extension Card {
   
   enum LayoutType {
     case base(image: UIImage, info: DetailInfo)
+    case bottomBase(image: UIImage, header: String, title: String)
   }
   
 }
@@ -117,7 +168,15 @@ extension Card: UIComponentPresentViewProtocol {
                                                        title: "NBA all Star 2020",
                                                        infoDescription: "Team LBJ")))
     
-    return [card1]
+    let card2 = Card(with: .bottomBase(image: #imageLiteral(resourceName: "card-image-1"),
+                                       header: "All Star",
+                                       title: "NBA All Star 2020 - LBJ Team"))
+    
+    let card3 = Card(with: .bottomBase(image: #imageLiteral(resourceName: "card-image-1"),
+                                       header: "All Star",
+                                       title: "NBA All Star 2020\nLBJ Team\nLBJ Wins 157-155"))
+    
+    return [card1, card2, card3]
   }
   
 }
