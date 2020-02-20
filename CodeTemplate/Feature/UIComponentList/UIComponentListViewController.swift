@@ -40,6 +40,10 @@ class UIComponentListViewController: BaseViewController, ViewControllerProtocol 
     _view.stackView.spacing = 20.0
     _view.stackViewInset = UIEdgeInsets(uniformPadding: 10.0)
     
+    NSLayoutConstraint.activate([
+      _view.stackView.centerXAnchor.constraint(equalTo: _view.centerXAnchor)
+    ])
+    
     viewModel.output.presentors.sink { [weak self] data in
       self?.presentors = data
     }.dispose(at: &cancellables)

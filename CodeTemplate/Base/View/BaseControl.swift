@@ -112,7 +112,7 @@ class BaseControl: UIControl {
       }, completion: nil)
     case .hightlight(let backgroundColor):
       backgroundColorView.backgroundColor = backgroundColor
-      UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+      UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
         self.backgroundColorView.alpha = 1.0
       }, completion: nil)
     case .none:
@@ -127,7 +127,7 @@ class BaseControl: UIControl {
         self.contentView.transform = .identity
       }, completion: nil)
     case .hightlight:
-      UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {
+      UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
         self.backgroundColorView.alpha = 0.0
       }, completion: nil)
     case .none:

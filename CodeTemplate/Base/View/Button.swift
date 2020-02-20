@@ -39,6 +39,10 @@ class Button: BaseControl {
     contentView.backgroundColor = UIColor(red: 222.0/255.0, green: 101.0/255.0, blue: 77.0/255.0, alpha: 1.0)
   }
   
+  override var intrinsicContentSize: CGSize {
+    return CGSize(width: 100.0, height: 50.0)
+  }
+  
 }
 
 extension Button: UIComponentPresentViewProtocol {

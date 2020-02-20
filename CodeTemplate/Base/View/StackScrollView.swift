@@ -25,22 +25,22 @@ class StackScrollView: UIView {
   }()
   
   private lazy var stackViewLeftConstraint: NSLayoutConstraint = {
-    return stackView.leftAnchor.constraint(equalTo: leftAnchor)
+    return stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor)
   }()
   
   private lazy var stackViewRightConstraint: NSLayoutConstraint = {
-    return stackView.rightAnchor.constraint(equalTo: rightAnchor)
+    return stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor)
   }()
   
   private lazy var stackViewBottomConstraint: NSLayoutConstraint = {
-    return stackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
+    return stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
   }()
   
   init() {
     super.init(frame: .zero)
     addSubview(scrollView)
+    scrollView.alwaysBounceVertical = true
     scrollView.pinToSuperView()
-    
     scrollView.addSubview(stackView)
     NSLayoutConstraint.activate([
       stackViewTopConstraint,
@@ -49,7 +49,6 @@ class StackScrollView: UIView {
       stackViewBottomConstraint
     ])
     updateStackViewConstraint(inset: stackViewInset)
-    
     backgroundColor = .white
   }
   
