@@ -13,7 +13,7 @@ class CardComponentListViewModel: UIComponentListViewModel {
   
   override func provideData() -> [UIComponentPresentModel] {
     return [
-      UIComponentPresentModel(presentViewCreator: Card.self, size: CGSize(width: 350.0, height: 300.0))
+      UIComponentPresentModel(presentViewCreator: Card<CardBaseLayout>.self, size: CGSize(width: 350.0, height: 350.0))
     ]
   }
   

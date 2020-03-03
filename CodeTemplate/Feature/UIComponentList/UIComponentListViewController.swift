@@ -37,8 +37,12 @@ class UIComponentListViewController: BaseViewController, ViewControllerProtocol 
     super.viewDidLoad()
     _view.stackView.axis = .vertical
     _view.stackView.alignment = .center
-    _view.stackView.spacing = 10.0
+    _view.stackView.spacing = 20.0
     _view.stackViewInset = UIEdgeInsets(uniformPadding: 10.0)
+    
+    NSLayoutConstraint.activate([
+      _view.stackView.centerXAnchor.constraint(equalTo: _view.centerXAnchor)
+    ])
     
     viewModel.output.presentors.sink { [weak self] data in
       self?.presentors = data

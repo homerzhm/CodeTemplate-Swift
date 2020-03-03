@@ -17,6 +17,25 @@ class BaseControl: UIControl {
   private var actions: [Action] = []
   var animation: Animation = .scale(value: 0.95)
   
+  var shadowSetting: ShadowSetting = ShadowSetting.none {
+    didSet {
+      switch shadowSetting {
+      case .normal(let info):
+        layer.shadowPath = info.path
+        layer.shadowRadius = info.radius
+        layer.shadowOffset = info.offset
+        layer.shadowOpacity = Float(info.opacity)
+        layer.shadowColor = info.color.cgColor
+      case .none:
+        layer.shadowPath = nil
+        layer.shadowRadius = 0
+        layer.shadowOffset = CGSize.zero
+        layer.shadowOpacity = 0
+        layer.shadowColor = nil
+      }
+    }
+  }
+  
   init() {
     super.init(frame: .zero)
     addSubview(contentView)
@@ -25,6 +44,12 @@ class BaseControl: UIControl {
     contentView.addSubview(backgroundColorView)
     backgroundColorView.pinToSuperView()
     backgroundColorView.alpha = 0.0
+    
+    layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+    layer.shadowRadius = 5
+    layer.shadowOffset = .zero
+    layer.shadowOpacity = 1
+    layer.shadowColor = UIColor.black.cgColor
   }
   
   @available(*, unavailable)
@@ -87,7 +112,7 @@ class BaseControl: UIControl {
       }, completion: nil)
     case .hightlight(let backgroundColor):
       backgroundColorView.backgroundColor = backgroundColor
-      UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseOut, animations: {
+      UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
         self.backgroundColorView.alpha = 1.0
       }, completion: nil)
     case .none:
@@ -102,7 +127,7 @@ class BaseControl: UIControl {
         self.contentView.transform = .identity
       }, completion: nil)
     case .hightlight:
-      UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {
+      UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
         self.backgroundColorView.alpha = 0.0
       }, completion: nil)
     case .none:
@@ -136,4 +161,18 @@ extension BaseControl {
     case hightlight(backgroundColor: UIColor)
     case none
   }
+  
+  struct ShadowInfo {
+    let path: CGPath?
+    let radius: CGFloat
+    let offset: CGSize
+    let opacity: CGFloat
+    let color: UIColor
+  }
+  
+  enum ShadowSetting {
+    case normal(info: ShadowInfo)
+    case none
+  }
+  
 }
