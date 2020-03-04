@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-public class BaseControl: UIControl {
+open class BaseControl: UIControl {
   
-  let contentView = UIView().layoutByConstraint()
+  public let contentView = UIView().layoutByConstraint()
   private let backgroundColorView = UIView().layoutByConstraint()
   
   private var actions: [Action] = []
-  var animation: Animation = .scale(value: 0.95)
+  public var animation: Animation = .scale(value: 0.95)
   
-  var shadowSetting: ShadowSetting = ShadowSetting.none {
+  public var shadowSetting: ShadowSetting = ShadowSetting.none {
     didSet {
       switch shadowSetting {
       case .normal(let info):
@@ -36,7 +36,7 @@ public class BaseControl: UIControl {
     }
   }
   
-  init() {
+  public init() {
     super.init(frame: .zero)
     addSubview(contentView)
     contentView.clipsToBounds = true
@@ -53,17 +53,17 @@ public class BaseControl: UIControl {
   }
   
   @available(*, unavailable)
-  required init?(coder: NSCoder) {
+  required public init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func addAction(event: UIControl.Event, handler: @escaping Action.ActionBlock) {
+  public func addAction(event: UIControl.Event, handler: @escaping Action.ActionBlock) {
     let action = Action(event: event, handler: handler)
     actions.append(action)
     addTarget(action, action: #selector(Action.performAction), for: event)
   }
   
-  func removeAllActions() {
+  public func removeAllActions() {
     for action in actions {
       removeTarget(action, action: #selector(Action.performAction), for: action.event)
     }
@@ -136,10 +136,10 @@ public class BaseControl: UIControl {
   }
 }
 
-extension BaseControl {
+public extension BaseControl {
   class Action {
     
-    typealias ActionBlock = (Action, UIControl.Event) -> Void
+    public typealias ActionBlock = (Action, UIControl.Event) -> Void
     
     let handler: ActionBlock
     let event: UIControl.Event

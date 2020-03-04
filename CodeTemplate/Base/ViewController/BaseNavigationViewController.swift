@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class BaseNavigationViewController: UINavigationController {
+open class BaseNavigationViewController: UINavigationController {
   
  public var viewDidDismiss: ((_ navigationViewController: UINavigationController) -> Void)?
   

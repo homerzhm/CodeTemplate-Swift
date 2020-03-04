@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class Button: BaseControl {
+open class Button: BaseControl {
   
   struct Design {
     static let cornerRadiuse: CGFloat = 5.0
