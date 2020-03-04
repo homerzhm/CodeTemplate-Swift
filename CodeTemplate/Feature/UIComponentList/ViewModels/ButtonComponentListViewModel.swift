@@ -18,3 +18,18 @@ class ButtonComponentListViewModel: UIComponentListViewModel {
   }
   
 }
+
+extension Button: UIComponentPresentViewProtocol {
+  
+  static func createPresentViews() -> [UIView] {
+    let button1 = Button()
+    button1.buttonText = "Scale Button"
+    
+    let button2 = Button()
+    button2.buttonText = "Highlight Button"
+    button2.animation = .hightlight(backgroundColor: UIColor(red: 223.0/255.0, green: 154/255.0, blue: 135/255.0, alpha: 1.0))
+    
+    return [button1, button2]
+  }
+  
+}
