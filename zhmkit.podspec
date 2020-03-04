@@ -28,7 +28,7 @@ Pod::Spec.new do |spec|
   Creating a useful project that is easy to implement a new project.
                    DESC
 
-  spec.homepage     = "http://EXAMPLE/zhmkit"
+  spec.homepage     = "https://github.com/homerzhm/CodeTemplate-Swift.git"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -65,7 +65,8 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-  spec.platform     = :ios, "13.0"
+  #spec.platform     = :ios, "13.0"
+  spec.ios.deployment_target = "13.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
