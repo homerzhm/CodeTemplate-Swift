@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BaseControl: UIControl {
+public class BaseControl: UIControl {
   
   let contentView = UIView().layoutByConstraint()
   private let backgroundColorView = UIView().layoutByConstraint()
@@ -69,7 +69,7 @@ class BaseControl: UIControl {
     }
   }
   
-  override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+  override public func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
     let hitView = super.hitTest(point, with: event)
     if let view = hitView {
       if view == contentView {
@@ -83,13 +83,13 @@ class BaseControl: UIControl {
     return hitView
   }
   
-  override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+  override public func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
     let result = super.beginTracking(touch, with: event)
     presentAnimation(animation: animation)
     return result
   }
   
-  override func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+  override public func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
     let result = super.continueTracking(touch, with: event)
     if touch.phase == .moved {
       isTouchInside ? presentAnimation(animation: animation) : dismissAnimation(animation: animation)
@@ -97,7 +97,7 @@ class BaseControl: UIControl {
     return result
   }
   
-  override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
+  override public func endTracking(_ touch: UITouch?, with event: UIEvent?) {
     super.endTracking(touch, with: event)
     if let touch = touch, touch.phase == .ended {
       dismissAnimation(animation: animation)

@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class BaseNavigationViewController: UINavigationController {
+public class BaseNavigationViewController: UINavigationController {
   
-  var viewDidDismiss: ((_ navigationViewController: UINavigationController) -> Void)?
+ public var viewDidDismiss: ((_ navigationViewController: UINavigationController) -> Void)?
   
-  override func viewDidDisappear(_ animated: Bool) {
+  override public func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     viewDidDismiss?(self)
   }
