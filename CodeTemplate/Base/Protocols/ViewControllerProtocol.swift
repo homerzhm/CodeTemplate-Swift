@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ViewControllerProtocol: class {
+public protocol ViewControllerProtocol: class {
     associatedtype ViewModel = ViewModelProtocol
     
     var viewModel: ViewModel { get }

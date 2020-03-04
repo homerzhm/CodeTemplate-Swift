@@ -11,7 +11,7 @@ import Foundation
 import Foundation
 import UIKit
 
-protocol Coordinator: class {
+public protocol Coordinator: class {
   
   /// Identifier for coordinator
   var identifier: String { get }
@@ -32,7 +32,7 @@ protocol Coordinator: class {
   func coordinatorIsFinished()
 }
 
-extension Coordinator {
+public extension Coordinator {
   
   func addChildCoordinator(childCoordinator: Coordinator) {
     if childCoordinators.first(where: { $0.identifier == childCoordinator.identifier }) != nil {
@@ -54,22 +54,22 @@ extension Coordinator {
   
 }
 
-class BaseCoordinator: NSObject & Coordinator {
+public class BaseCoordinator: NSObject & Coordinator {
   
-  var childCoordinators: [Coordinator] = []
+  public var childCoordinators: [Coordinator] = []
   
-  weak var parentCoordinators: Coordinator?
+  weak public var parentCoordinators: Coordinator?
   
-  let identifier: String = UUID().uuidString
+  public let identifier: String = UUID().uuidString
   
-  let rootNavigationController: BaseNavigationViewController?
+  public let rootNavigationController: BaseNavigationViewController?
   
-  init(rootNavigationController: BaseNavigationViewController? = nil) {
+  public init(rootNavigationController: BaseNavigationViewController? = nil) {
     self.rootNavigationController = rootNavigationController
     super.init()
   }
   
-  func start() {
+  public func start() {
     fatalError("SubClass should override this")
   }
   

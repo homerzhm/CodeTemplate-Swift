@@ -18,8 +18,8 @@
 		338B791323F4A193006ECE6B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B791223F4A193006ECE6B /* BaseViewController.swift */; };
 		338B791523F4A1AD006ECE6B /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B791423F4A1AD006ECE6B /* BaseNavigationViewController.swift */; };
 		338B791723F4A1FD006ECE6B /* DebugsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B791623F4A1FD006ECE6B /* DebugsViewModel.swift */; };
-		338B791923F4A209006ECE6B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B791823F4A209006ECE6B /* ViewModel.swift */; };
-		338B791B23F4A239006ECE6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B791A23F4A239006ECE6B /* ViewController.swift */; };
+		338B791923F4A209006ECE6B /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B791823F4A209006ECE6B /* ViewModelProtocol.swift */; };
+		338B791B23F4A239006ECE6B /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B791A23F4A239006ECE6B /* ViewControllerProtocol.swift */; };
 		338B791D23F4A5FF006ECE6B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338B791C23F4A5FF006ECE6B /* Launch Screen.storyboard */; };
 		338B792123F4A9C4006ECE6B /* UIComponentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B792023F4A9C4006ECE6B /* UIComponentListViewController.swift */; };
 		338B792323F4A9D4006ECE6B /* UIComponentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B792223F4A9D4006ECE6B /* UIComponentCoordinator.swift */; };
@@ -75,8 +75,8 @@
 		338B791223F4A193006ECE6B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		338B791423F4A1AD006ECE6B /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		338B791623F4A1FD006ECE6B /* DebugsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugsViewModel.swift; sourceTree = "<group>"; };
-		338B791823F4A209006ECE6B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		338B791A23F4A239006ECE6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		338B791823F4A209006ECE6B /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		338B791A23F4A239006ECE6B /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
 		338B791C23F4A5FF006ECE6B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		338B792023F4A9C4006ECE6B /* UIComponentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentListViewController.swift; sourceTree = "<group>"; };
 		338B792223F4A9D4006ECE6B /* UIComponentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentCoordinator.swift; sourceTree = "<group>"; };
@@ -176,8 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				338B790F23F4A14F006ECE6B /* Coordinator.swift */,
-				338B791823F4A209006ECE6B /* ViewModel.swift */,
-				338B791A23F4A239006ECE6B /* ViewController.swift */,
+				338B791823F4A209006ECE6B /* ViewModelProtocol.swift */,
+				338B791A23F4A239006ECE6B /* ViewControllerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -242,7 +242,6 @@
 				BE94097D2DFB8242480959DC /* Pods-CodeTemplateTests.debug.xcconfig */,
 				0FC675923A6B0405CF6BE549 /* Pods-CodeTemplateTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -549,7 +548,7 @@
 				3336B40A23FC8D4F00E821DB /* CardComponentListViewModel.swift in Sources */,
 				338B792823F5B41F006ECE6B /* StackScrollView.swift in Sources */,
 				333943D923FC780E003931DB /* Combine.swift in Sources */,
-				338B791B23F4A239006ECE6B /* ViewController.swift in Sources */,
+				338B791B23F4A239006ECE6B /* ViewControllerProtocol.swift in Sources */,
 				F1B5B5EB23AD66F00000F521 /* DebugToolsViewController.swift in Sources */,
 				F1B5B5AB23ABD96C0000F521 /* AppDelegate.swift in Sources */,
 				338B792323F4A9D4006ECE6B /* UIComponentCoordinator.swift in Sources */,
@@ -559,7 +558,7 @@
 				338B792523F4A9FC006ECE6B /* UIComponentListViewModel.swift in Sources */,
 				338B791023F4A14F006ECE6B /* Coordinator.swift in Sources */,
 				F1B5B5E823AD66F00000F521 /* Array.swift in Sources */,
-				338B791923F4A209006ECE6B /* ViewModel.swift in Sources */,
+				338B791923F4A209006ECE6B /* ViewModelProtocol.swift in Sources */,
 				338B792A23F5D6D0006ECE6B /* Geometry.swift in Sources */,
 				3336B40C23FC94C600E821DB /* ButtonComponentListViewModel.swift in Sources */,
 				F1B5B5E923AD66F00000F521 /* Font.swift in Sources */,

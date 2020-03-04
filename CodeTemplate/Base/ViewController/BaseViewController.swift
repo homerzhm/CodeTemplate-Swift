@@ -9,20 +9,20 @@
 import Foundation
 import UIKit
 
-class BaseViewController: UIViewController {
+public class BaseViewController: UIViewController {
   
-  init() {
+  public init() {
     super.init(nibName: nil, bundle: nil)
   }
   
-  var viewDidDismiss: ((_ viewController: BaseViewController) -> Void)?
+  public var viewDidDismiss: ((_ viewController: BaseViewController) -> Void)?
   
   @available(*, unavailable)
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  override func viewDidDisappear(_ animated: Bool) {
+  override public func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     viewDidDismiss?(self)
   }
