@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-class StackScrollView: UIView {
+public class StackScrollView: UIView {
   
   private let scrollView = UIScrollView().layoutByConstraint()
-  let stackView = UIStackView().layoutByConstraint()
+  public let stackView = UIStackView().layoutByConstraint()
   
-  var stackViewInset = UIEdgeInsets(uniformPadding: 0.0) {
+  public var stackViewInset = UIEdgeInsets(uniformPadding: 0.0) {
     didSet {
       updateStackViewConstraint(inset: stackViewInset)
     }
@@ -36,7 +36,7 @@ class StackScrollView: UIView {
     return stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
   }()
   
-  init() {
+  public init() {
     super.init(frame: .zero)
     addSubview(scrollView)
     scrollView.alwaysBounceVertical = true
